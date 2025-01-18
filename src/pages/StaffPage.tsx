@@ -5,7 +5,7 @@ import {StaffTableComponents} from "../components/staff/StaffTableComponent.tsx"
 export const StaffPage = () => {
     return (
         <>
-            <div className="flex">
+            <div className="flex w-4/5">
                 <SliderBarComponents/>
                 <div className="flex-grow p-1">
                     <StaffInputComponents/>

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import {Field} from "../../models/Filed.ts";
 import {useDispatch} from "react-redux";
-import {addField} from "../../reducers/FieldSlice.tsx";
+import {LogMonitoring} from "../../models/LogMonitoring.ts";
+import {addLogMonitoring} from "../../reducers/LogMonitoringSlice.tsx";
 
-export const FieldInputComponents = () => {
+export const LogInputComponents = () => {
     const [showModal, setShowModal] = useState(false);
 
     const handleAddFieldClick = () => {
@@ -16,27 +16,28 @@ export const FieldInputComponents = () => {
 
     const dispatch = useDispatch();
 
-
-    const [fieldCode, setFieldCode] = useState("");
-    const [fieldName, setFieldName] = useState("");
-    const [fieldLocation, setFieldLocation] = useState("");
-    const [extentSize, setExtentSize] = useState("");
-    const [fieldImage01, setFieldImage01] = useState("");
-    const [fieldImage02, setFieldImage02] = useState("");
+    const [LogCode,setLogCode] = useState("");
+    const [LogDate, setLogData] = useState("");
+    const [Observation, setObservation] = useState("");
+    const [Image, setImage] = useState("");
+    const [FieldCode, setFieldCode] = useState("");
+    const [CropCode, setCropCode] = useState("");
+    const [StaffId, setStaffId] = useState("");
 
     const handleSaveField = (type:string) => {
         // Logic to save the field data goes here
         setShowModal(false); // Close the modal after saving
-        const newField:Field ={
-            fieldCode,fieldName,fieldLocation,extentSize,
-            fieldImage01,fieldImage02
-        };
+
+        const NewLog :LogMonitoring = {
+            LogCode,LogDate,Observation,Image,FieldCode,
+            CropCode,StaffId
+        }
         console.log("Add Field button clicked");
 
         switch (type){
             case "Add_FIELD":
-                dispatch(addField(newField))
-                console.log(newField)
+                dispatch(addLogMonitoring(NewLog))
+                console.log(NewLog)
                 break;
 
         }
@@ -69,15 +70,15 @@ export const FieldInputComponents = () => {
         <>
             <div>
                 {/* Main Content */}
-                <div className="ml-64 w-4/5	 p-5">
+                <div className="ml-64 w-full p-5">
                     <header className="flex justify-between items-center mb-5">
-                        <h1 className="text-2xl font-bold">Field Management</h1>
+                        <h1 className="text-2xl font-bold">Monitoring Log Management</h1>
                         <button
                             onClick={handleAddFieldClick}
                             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                         >
 
-                            Add Field
+                            Add Monitoring Log
                         </button>
                     </header>
 
@@ -88,7 +89,7 @@ export const FieldInputComponents = () => {
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="bg-white w-96 p-6 rounded shadow-lg relative">
-                        <h2 className="text-xl font-bold mb-4">Add Field</h2>
+                        <h2 className="text-xl font-bold mb-4">Add Monitoring Log</h2>
                         <button
                             onClick={handleCloseModal}
                             className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
@@ -97,58 +98,70 @@ export const FieldInputComponents = () => {
                         </button>
                         <form>
                             <div className="mb-4">
-                                <label className="block text-gray-700">Field Code</label>
+                                <label className="block text-gray-700">Log Code</label>
                                 <input
                                     type="text"
-                                    placeholder="file code"
+                                    placeholder="Enter Log code"
                                     // value="F-111"
                                     // disabled
-                                    onChange={(e)=>setFieldCode(e.target.value)}
+                                    onChange={(e) => setLogCode(e.target.value)}
                                     className="w-full mt-1 px-3 py-2 border rounded bg-gray-100"
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700">Field Name</label>
+                                <label className="block text-gray-700">Log Date</label>
                                 <input
                                     type="text"
-                                    placeholder="Enter field name"
-                                    onChange={(e)=>setFieldName(e.target.value)}
+                                    placeholder="Enter log date"
+                                    onChange={(e) => setLogData(e.target.value)}
                                     className="w-full mt-1 px-3 py-2 border rounded"
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700">Field Location</label>
+                                <label className="block text-gray-700">Observation</label>
                                 <input
                                     type="text"
-                                    placeholder="Enter field location"
-                                    onChange={(e)=>setFieldLocation(e.target.value)}
+                                    placeholder="Enter observation"
+                                    onChange={(e) => setObservation(e.target.value)}
                                     className="w-full mt-1 px-3 py-2 border rounded"
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700">Extent Size</label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter extent size"
-                                    onChange={(e)=>setExtentSize(e.target.value)}
-                                    className="w-full mt-1 px-3 py-2 border rounded"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block text-gray-700">Field Image 1</label>
+                                <label className="block text-gray-700">Image </label>
                                 <input type="file"
-                                       onChange={(e)=>setFieldImage01(e.target.value)}
-                                       className="w-full mt-1 px-3 py-2 border rounded" />
+                                       onChange={(e) => setImage(e.target.value)}
+                                       className="w-full mt-1 px-3 py-2 border rounded"/>
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700">Field Image 2</label>
-                                <input type="file"
-                                       onChange={(e)=>setFieldImage02(e.target.value)}
-                                       className="w-full mt-1 px-3 py-2 border rounded" />
+                                <label className="block text-gray-700">Filed Code</label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter field code"
+                                    onChange={(e) => setFieldCode(e.target.value)}
+                                    className="w-full mt-1 px-3 py-2 border rounded"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700">Crop Code</label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter crop code"
+                                    onChange={(e) => setCropCode(e.target.value)}
+                                    className="w-full mt-1 px-3 py-2 border rounded"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700">Staff Id</label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter staff id"
+                                    onChange={(e) => setStaffId(e.target.value)}
+                                    className="w-full mt-1 px-3 py-2 border rounded"
+                                />
                             </div>
                             <button
                                 type="button"
-                                onClick={()=>handleSaveField('Add_FIELD')}
+                                onClick={() => handleSaveField('Add_FIELD')}
                                 className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
                             >
                                 Save
@@ -165,4 +178,4 @@ export const FieldInputComponents = () => {
     );
 };
 
-export default FieldInputComponents;
+export default LogInputComponents;

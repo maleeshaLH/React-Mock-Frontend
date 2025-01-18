@@ -1,10 +1,39 @@
 import {Field} from "../../models/Filed.ts";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addField, deleteField} from "../../reducers/FieldSlice.tsx";
+import {useState} from "react";
 
 export const FieldTableComponents =  () => {
 
     // @ts-ignore
     const fields = useSelector((state) => state.field);
+    const dispatch = useDispatch();
+
+
+    // const handleSubmitField =(type:string) => {
+    //     const newField:Field ={
+    //     (field :Field) =>(
+    //         fields.
+    //     )
+    //
+    //     };
+    //     console.log("delete Field button clicked");
+    //
+    //     switch (type){
+    //         case "DELETE_FIELD":
+    //             dispatch(deleteField(newField))
+    //             console.log(newField)
+    //             break;
+    //
+    //     }
+    // }
+    const handleDelete = (fieldCode: string) => {
+        // Dispatch the delete action (confirm deletion if needed)
+        if (window.confirm("Are you sure you want to delete this field?")) {
+            // @ts-ignore
+            dispatch(deleteField(fieldCode));
+        }
+    };
 
     return (
         <>
@@ -43,7 +72,20 @@ export const FieldTableComponents =  () => {
                                         className="w-16 h-16 object-cover"
                                     />
                                 </td>
-
+                                <td className="custome-table text-center">
+                                    <button
+                                        // onClick={() => handleUpdate(field.fieldCode)}
+                                        className="bg-blue-400 text-white px-3 py-1 rounded hover:bg-blue-600"
+                                    >
+                                        Update
+                                    </button>
+                                    <button
+                                        onClick={() => handleDelete(field.fieldCode)}
+                                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
 
                             </tr>
                         ))

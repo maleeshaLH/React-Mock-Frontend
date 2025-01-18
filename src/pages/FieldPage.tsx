@@ -4,9 +4,9 @@ import FieldTableComponents from "../components/field/FieldTableComponents.tsx";
 
 export const FieldManagement = () => {
     return (
-        <div className="flex">
+        <div className="flex w-4/5">
             <SliderBarComponents />
-            <div className="flex-grow p-1">
+            <div className="flex-grow p-1 w-4/5">
                 <FieldInputComponents/>
                 <FieldTableComponents/>
             </div>

@@ -8,8 +8,17 @@ export const fieldSlice = createSlice({
     reducers:{
         addField(state, action: PayloadAction<Field>){
             state.push(action.payload);
+        },
+        updateField(state, action: PayloadAction<Field>){
+            return state.map(field =>
+            field.fieldCode === action.payload.fieldCode ? action.payload : field);
+        },
+        deleteField(state, action: PayloadAction<Field>){
+            // @ts-ignore
+            return state.filter((field) => field.fieldCode !== action.payload);
+
         }
     }
 })
-export const {addField} = fieldSlice.actions;
+export const {addField,updateField,deleteField} = fieldSlice.actions;
 export default fieldSlice.reducer;

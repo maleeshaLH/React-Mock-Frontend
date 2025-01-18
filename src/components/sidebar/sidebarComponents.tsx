@@ -25,35 +25,35 @@ export const SliderBarComponents = () => {
                         </li>
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/field" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                <Link to="/crop" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
                                 Crop
                             </Link>
                             </span>
                         </li>
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/field" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                <Link to="/staff" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
                                 Staff
                             </Link>
                             </span>
                         </li>
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/field" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                <Link to="/log" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
                                 Monitoring Log
                             </Link>
                             </span>
                         </li>
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/field" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                <Link to="/vehicle" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
                                 Vehicle
                             </Link>
                             </span>
                         </li>
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/field" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                <Link to="/equipment" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
                                 Equipment
                             </Link>
                             </span>
