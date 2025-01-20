@@ -110,7 +110,7 @@ export const StaffInputComponents = () => {
                                     // value="F-111"
                                     // disabled
                                     onChange={(e) => setId(e.target.value)}
-                                    className="w-full mt-1 px-3 py-2 border rounded bg-gray-100"
+                                    className="w-fu  ll mt-1 px-3 py-2 border rounded bg-gray-100"
                                 />
                             </div>
                             <div className="mb-4">

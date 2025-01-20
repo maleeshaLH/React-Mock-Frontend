@@ -1,7 +1,9 @@
 import {Field} from "../../models/Filed.ts";
 import {useDispatch, useSelector} from "react-redux";
-import {addField, deleteField} from "../../reducers/FieldSlice.tsx";
-import {useState} from "react";
+import { deleteField} from "../../reducers/FieldSlice.tsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export const FieldTableComponents =  () => {
 
@@ -10,25 +12,8 @@ export const FieldTableComponents =  () => {
     const dispatch = useDispatch();
 
 
-    // const handleSubmitField =(type:string) => {
-    //     const newField:Field ={
-    //     (field :Field) =>(
-    //         fields.
-    //     )
-    //
-    //     };
-    //     console.log("delete Field button clicked");
-    //
-    //     switch (type){
-    //         case "DELETE_FIELD":
-    //             dispatch(deleteField(newField))
-    //             console.log(newField)
-    //             break;
-    //
-    //     }
-    // }
     const handleDelete = (fieldCode: string) => {
-        // Dispatch the delete action (confirm deletion if needed)
+
         if (window.confirm("Are you sure you want to delete this field?")) {
             // @ts-ignore
             dispatch(deleteField(fieldCode));
@@ -77,13 +62,15 @@ export const FieldTableComponents =  () => {
                                         // onClick={() => handleUpdate(field.fieldCode)}
                                         className="bg-blue-400 text-white px-3 py-1 rounded hover:bg-blue-600"
                                     >
-                                        Update
+                                        <FontAwesomeIcon icon={faPen} />
+
                                     </button>
                                     <button
                                         onClick={() => handleDelete(field.fieldCode)}
                                         className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600"
                                     >
-                                        Delete
+                                        <FontAwesomeIcon icon={faTrash} />
+
                                     </button>
                                 </td>
 

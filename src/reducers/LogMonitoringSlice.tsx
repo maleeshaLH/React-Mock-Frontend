@@ -8,8 +8,12 @@ export const logMonitoringSlice = createSlice({
     reducers:{
         addLogMonitoring(state, action: PayloadAction<LogMonitoring>){
             state.push(action.payload);
+        },
+        deleteLogMonitoring(state, action: PayloadAction<LogMonitoring>){
+            // @ts-ignore
+            return state.filter((logMonitoring) => logMonitoring.LogCode !== action.payload);
         }
     }
 })
-export const {addLogMonitoring} =logMonitoringSlice.actions;
+export const {addLogMonitoring,deleteLogMonitoring} =logMonitoringSlice.actions;
 export default logMonitoringSlice.reducer;

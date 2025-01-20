@@ -1,10 +1,21 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {LogMonitoring} from "../../models/LogMonitoring.ts";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPen, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {deleteLogMonitoring} from "../../reducers/LogMonitoringSlice.tsx";
 
 export const LogMonitoringTableComponents =  () => {
 
     // @ts-ignore
     const logs = useSelector((state) => state.logMonitoring);
+    const dispatch = useDispatch();
+    const handleDelete = (logCode: string) => {
+
+        if (window.confirm("Are you sure you want to delete this logs ?")) {
+            // @ts-ignore
+            dispatch(deleteLogMonitoring(logCode));
+        }
+    };
 
     return (
         <>
@@ -40,7 +51,22 @@ export const LogMonitoringTableComponents =  () => {
                                 <td className="custome-table text-center">{log.FieldCode}</td>
                                 <td className="custome-table text-center">{log.CropCode}</td>
                                 <td className="custome-table text-center">{log.StaffId}</td>
+                                <td className="custome-table text-center">
+                                    <button
+                                        // onClick={() => handleUpdate(field.fieldCode)}
+                                        className="bg-blue-400 text-white px-3 py-1 rounded hover:bg-blue-600"
+                                    >
+                                        <FontAwesomeIcon icon={faPen}/>
 
+                                    </button>
+                                    <button
+                                        onClick={() => handleDelete(log.LogCode)}
+                                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600"
+                                    >
+                                        <FontAwesomeIcon icon={faTrash}/>
+
+                                    </button>
+                                </td>
                             </tr>
                         ))
                     ) : (
